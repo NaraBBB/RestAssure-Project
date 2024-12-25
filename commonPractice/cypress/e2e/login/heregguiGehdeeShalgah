@@ -57,7 +57,7 @@ describe('Create Listing Test', () => {
           cy.log(JSON.stringify(response.body)); //! Log the response body for debugging
           expect(response.status).to.eq(201); //! Adjust once issue is resolved
         });
-            ! Make the request
+          //  ! Make the request
         cy.request({
             method: 'POST',
             url: 'https://dev.delekhomes.com/api/estate-objects',
