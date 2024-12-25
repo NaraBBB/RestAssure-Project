@@ -2,9 +2,6 @@ name: Cypress Tests
 
 on:
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Ignore it for now'
   pull_request:
     branches: [ main ]
 
@@ -22,13 +19,12 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          ls -R # Debug: Inspect file structure
+          npm install
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v2
         with:
           record: false
           config-file: cypress.json
-
-      - name: Debug file structure
-        run: ls -R
