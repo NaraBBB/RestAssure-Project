@@ -42,22 +42,22 @@ describe('Create Listing Test', () => {
           })
           .join('\r\n') + `\r\n--${boundary}--`;
   
-        // ! Make the request
-        // cy.request({
-        //   method: 'POST',
-        //   url: 'https://dev.delekhomes.com/api/estate-objects',
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //     'Content-Type': `multipart/form-data; boundary=${boundary}`,
-        //   },
-        //   body: requestBody,
-        //   failOnStatusCode: false, //! Prevent Cypress from failing on non-2xx/3xx responses
-        // }).then((response) => {
-        //   //! Log the response and make assertions
-        //   cy.log(JSON.stringify(response.body)); //! Log the response body for debugging
-        //   expect(response.status).to.eq(201); //! Adjust once issue is resolved
-        // });
-            // ! Make the request
+       //! ajildaggui request 
+        cy.request({
+          method: 'POST',
+          url: 'https://dev.delekhomes.com/api/estate-objects',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': `multipart/form-data; boundary=${boundary}`,
+          },
+          body: requestBody,
+          failOnStatusCode: false, //! Prevent Cypress from failing on non-2xx/3xx responses
+        }).then((response) => {
+          //! Log the response and make assertions
+          cy.log(JSON.stringify(response.body)); //! Log the response body for debugging
+          expect(response.status).to.eq(201); //! Adjust once issue is resolved
+        });
+            ! Make the request
         cy.request({
             method: 'POST',
             url: 'https://dev.delekhomes.com/api/estate-objects',
