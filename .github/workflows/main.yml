@@ -9,24 +9,13 @@ on:
       - main
 
 jobs:
-  build:
+  cypress-run:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Navigate to project directory and install dependencies
-        run: |
-          cd RestAssure-Project
-          npm install
-
-      - name: Run tests
-        run: |
-          cd RestAssure-Project
-          npm test
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
