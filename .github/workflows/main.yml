@@ -1,4 +1,5 @@
 name: Cypress Tests
+
 on:
   workflow_dispatch:
     inputs:
@@ -10,11 +11,24 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
 
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v2
+        with:
+          record: false
+          config-file: cypress.json
+
+      - name: Debug file structure
+        run: ls -R
