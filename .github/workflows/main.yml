@@ -18,13 +18,19 @@ jobs:
         with:
           node-version: 20
 
+      - name: Navigate to commonPagePractice
+        run: cd commonPagePractice
+
       - name: Install dependencies
-        run: |
-          ls -R # Debug: Inspect file structure
-          npm install
+        working-directory: ./commonPagePractice
+        run: npm install
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v2
         with:
+          working-directory: ./commonPagePractice
           record: false
-          config-file: cypress.json
+          config-file: cypress.config.js
+
+      - name: Debug file structure
+        run: ls -R
