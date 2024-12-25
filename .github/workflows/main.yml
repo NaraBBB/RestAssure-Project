@@ -1,29 +1,21 @@
-name: Cypress Tests
+name: CI Workflow
+
 on:
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Ignore it for now'
+  push:
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  cypress-run:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-        - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v2
-        with:
-          record: false
-          config-file: cypress.json
+          node-version: '18'
+      - run: npm install
+      - run: npm test
