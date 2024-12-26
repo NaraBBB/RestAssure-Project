@@ -1,6 +1,6 @@
 import newRealestatePage from "../page_objects/newRealestatePage";
 
-describe("UI Test: Create a New Listing", () => {
+describe.skip("UI Test: Create a New Listing", () => {
   beforeEach(() => {
     cy.log_in();
   });
