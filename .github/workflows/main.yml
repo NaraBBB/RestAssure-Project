@@ -2,10 +2,9 @@ name: Cypress Tests
 
 on:
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Ignore it for now'
   pull_request:
+    branches: [ main ]
+  push:
     branches: [ main ]
 
 jobs:
@@ -13,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Node.js
@@ -21,7 +20,19 @@ jobs:
         with:
           node-version: 20
 
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+      - name: Navigate to week-10-cy-automation
+        run: cd week-10-cy-automation
+
+      - name: Install dependencies
+        working-directory: ./week-10-cy-automation
+        run: npm install
+
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v2
+        with:
+          working-directory: ./week-10-cy-automation
+          record: false
+          config-file: cypress.config.js
+
+      - name: Debug file structure
+        run: ls -R
