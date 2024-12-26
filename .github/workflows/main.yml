@@ -2,35 +2,21 @@ name: Cypress Tests
 
 on:
   workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Ignore it for now'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      - name: Navigate to commonPagePractice
-        run: cd commonPagePractice
-
-      - name: Install dependencies
-        working-directory: ./commonPagePractice
-        run: npm install
-
-      - name: Run Cypress tests
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
         uses: cypress-io/github-action@v2
-        with:
-          working-directory: ./commonPagePractice
-          record: false
-          config-file: cypress.config.js
 
-      - name: Debug file structure
-        run: ls -R
