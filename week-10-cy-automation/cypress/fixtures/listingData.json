@@ -1,0 +1,23 @@
+
+{
+  "title": "Beautiful House",
+  "address": "123 Main Street",
+  "city": "Los Angeles",
+  "state": "CA",
+  "zipCode": "90001",
+  "price": 750000,
+  "bedrooms": 3,
+  "bathrooms": 2,
+  "garage": 1,
+  "sqft": 2000,
+  "lotSize": 8000,
+  "isPublished": true,
+  "description": "A lovely home with modern amenities.",
+
+  "validationNewListing": {
+    "searchResult": "Beautiful House",
+    "selectedBedrooms":  "3",
+    "description": "A lovely home with modern amenities."
+  
+}
+}
