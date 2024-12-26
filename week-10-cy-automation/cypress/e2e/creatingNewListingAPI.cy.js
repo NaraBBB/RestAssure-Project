@@ -1,5 +1,5 @@
 let listingId;
-describe.skip("", () => {
+describe("", () => {
   beforeEach(() => {
     cy.wait(1000);
     cy.visit("/");
