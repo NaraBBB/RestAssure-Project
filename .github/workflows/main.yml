@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
   cypress-run:
@@ -18,17 +20,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: Navigate to commonPagePractice
-        run: cd commonPagePractice
+      - name: Navigate to week-10-cy-automation
+        run: cd week-10-cy-automation
 
       - name: Install dependencies
-        working-directory: ./commonPagePractice
+        working-directory: ./week-10-cy-automation
         run: npm install
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v2
         with:
-          working-directory: ./commonPagePractice
+          working-directory: ./week-10-cy-automation
           record: false
           config-file: cypress.config.js
 
